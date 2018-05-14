@@ -21,4 +21,12 @@ func main() {
 	x, y := <-c, <-c // receive from c
 
 	fmt.Println(x, y, x+y)
+
+	// Channels can be buffered, provide buffer length as 2nd argument to make to initialise
+	// a buffered channel
+	ch := make(chan int, 2)
+	ch <- 1
+	ch <- 2
+	fmt.Println(<-ch)
+	fmt.Println(<-ch)
 }
