@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // a struct is a collection of fields
 type Vertex struct {
@@ -141,6 +144,51 @@ func main() {
 	if o == nil {
 		fmt.Println("nil!")
 	}
+
+	// creating a slice with make
+	t := make([]int, 5)
+	printSlice(t)
+
+	t2 := make([]int, 0, 5)
+	printSlice(t2)
+
+	t3 := t2[:2]
+	printSlice(t3)
+
+	t4 := t3[2:5]
+	printSlice(t4)
+
+	// slices of slices
+	// create a tic-tac-toe board.
+	board := [][]string{
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+		[]string{"_", "_", "_"},
+	}
+
+	// players take turns
+	board[0][0] = "X"
+	board[2][2] = "O"
+	board[1][2] = "X"
+	board[1][0] = "O"
+	board[0][2] = "X"
+
+	for i := 0; i < len(board); i++ {
+		fmt.Printf("%s\n", strings.Join(board[i], " "))
+	}
+
+	// appending to a slice
+	var h []int
+	printSlice(h)
+
+	h = append(h, 0)
+	printSlice(h)
+
+	h = append(h, 1)
+	printSlice(h)
+
+	h = append(h, 2, 3, 4)
+	printSlice(h)
 }
 
 func printSlice(n []int) {
