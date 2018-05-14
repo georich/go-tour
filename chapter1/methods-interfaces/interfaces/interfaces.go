@@ -19,8 +19,14 @@ type T struct {
 }
 
 // method means type T implements interface I, don't have to explicitly declare this
-func (t T) M() {
+func (t *T) M() {
 	fmt.Println(t.S)
+}
+
+type F float64
+
+func (f F) M() {
+	fmt.Println(f)
 }
 
 func main() {
@@ -38,8 +44,19 @@ func main() {
 	fmt.Println(a.Abs())
 
 	// interfaces implicitly
-	var i I = T{"hello"}
-	i.M()
+	// var i I = T{"hello"}
+	// i.M()
+
+	// interface values
+	var i2 I
+
+	i2 = &T{"Hello"}
+	describe(i2)
+	i2.M()
+
+	i2 = F(math.Pi)
+	describe(i2)
+	i2.M()
 }
 
 type MyFloat float64
@@ -57,4 +74,9 @@ type Vertex struct {
 
 func (v *Vertex) Abs() float64 {
 	return math.Sqrt(v.X*v.X + v.Y*v.Y)
+}
+
+// interface values
+func describe(i I) {
+	fmt.Printf("(%v, %T)\n", i, i)
 }
