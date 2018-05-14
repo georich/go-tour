@@ -87,6 +87,11 @@ func main() {
 
 	// x = g.(float64) // panic
 	// fmt.Println(x)
+
+	// type switches
+	do(21)
+	do("hello")
+	do(true)
 }
 
 type MyFloat float64
@@ -110,4 +115,16 @@ func (v *Vertex) Abs() float64 {
 // func describe(i I) {
 func describe(i interface{}) {
 	fmt.Printf("(%v, %T)\n", i, i)
+}
+
+// type switches
+func do(i interface{}) {
+	switch v := i.(type) {
+	case int:
+		fmt.Printf("Twice %v is %v\n", v, v*2)
+	case string:
+		fmt.Printf("%q is %v bytes long\n", v, len(v))
+	default:
+		fmt.Printf("I don't know about type %T!\n", v)
+	}
 }
