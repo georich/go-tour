@@ -57,6 +57,21 @@ func main() {
 	i2 = F(math.Pi)
 	describe(i2)
 	i2.M()
+
+	// nil interface values - runtime error
+	// var i3 I
+	// describe(i3)
+	// i3.M()
+
+	// empty interface
+	var i4 interface{}
+	describe(i4)
+
+	i4 = 42
+	describe(i4)
+
+	i4 = "hello"
+	describe(i4)
 }
 
 type MyFloat float64
@@ -77,6 +92,7 @@ func (v *Vertex) Abs() float64 {
 }
 
 // interface values
-func describe(i I) {
+// func describe(i I) {
+func describe(i interface{}) {
 	fmt.Printf("(%v, %T)\n", i, i)
 }
