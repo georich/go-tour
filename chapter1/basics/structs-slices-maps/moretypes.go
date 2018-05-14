@@ -58,4 +58,48 @@ func main() {
 
 	primes := [6]int{2, 3, 5, 7, 11, 13}
 	fmt.Println(primes)
+
+	// Slices
+	// dynamically sized, []T is a slice with elements of type T
+	// specify two bounds a[low: high]
+	var s []int = primes[1:4]
+	fmt.Println(s)
+
+	// slices are like references to arrays
+	// changing the elements of a slice modifies the corresponding array
+	names := [4]string{
+		"John",
+		"Paul",
+		"George",
+		"Ringo",
+	}
+	fmt.Println(names)
+
+	b := names[0:2]
+	c := names[1:3]
+	fmt.Println(b, c)
+
+	c[0] = "XXX"
+	fmt.Println(b, c)
+	fmt.Println(names)
+
+	// slice literals
+	d := []int{2, 3, 5, 7, 11, 13}
+	fmt.Println(d)
+
+	e := []bool{true, false, true, true, false, true}
+	fmt.Println(e)
+
+	f := []struct {
+		i int
+		b bool
+	}{
+		{2, true},
+		{3, false},
+		{5, true},
+		{7, true},
+		{11, false},
+		{13, true},
+	}
+	fmt.Println(f)
 }
