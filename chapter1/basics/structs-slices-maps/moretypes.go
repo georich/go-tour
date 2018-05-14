@@ -102,4 +102,47 @@ func main() {
 		{13, true},
 	}
 	fmt.Println(f)
+
+	// slice defaults
+	// default lower bound is 0 and default higher bound is length of slice
+	z := []int{2, 3, 5, 7, 11, 13}
+
+	z = z[1:4]
+	fmt.Println(z)
+
+	z = z[:2]
+	fmt.Println(z)
+
+	z = z[1:]
+	fmt.Println(z)
+
+	// slice length and capacity
+	// length is number of elements
+	// capacity is number of elements in underlying array, counting from first element of slice
+	n := []int{2, 3, 5, 7, 11, 13}
+	printSlice(n)
+
+	// slice the slice to give it zero length
+	n = n[:0]
+	printSlice(n)
+
+	// extend its length
+	n = n[:4]
+	printSlice(n)
+
+	// drop its first two values
+	n = n[2:]
+	printSlice(n)
+
+	// nil slices
+	// zero value of a slice is nil
+	var o []int
+	fmt.Println(o, len(o), cap(o))
+	if o == nil {
+		fmt.Println("nil!")
+	}
+}
+
+func printSlice(n []int) {
+	fmt.Printf("len=%d cap=%d %v\n", len(n), cap(n), n)
 }
