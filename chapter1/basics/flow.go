@@ -108,4 +108,18 @@ func main() {
 	default:
 		fmt.Println("Good evening.")
 	}
+
+	// defer statement defers execution until surrounding function returns
+	// arguments are evaluated immediately though
+	defer fmt.Println("world")
+	fmt.Println("hello")
+
+	// stacking defers
+	fmt.Println("counting")
+
+	for i := 0; i < 10; i++ {
+		defer fmt.Println(i)
+	}
+
+	fmt.Println("done")
 }
