@@ -202,6 +202,54 @@ func main() {
 	for _, value := range pow {
 		fmt.Printf("%d\n", value)
 	}
+
+	// Maps
+	// a map maps keys to vales
+	var m map[string]VertexTwo
+
+	m = make(map[string]VertexTwo)
+	m["Bell Labs"] = VertexTwo{
+		40.68433, -74.39967,
+	}
+	fmt.Println(m["Bell Labs"])
+	fmt.Println(m)
+
+	// map literals
+	var m2 = map[string]VertexTwo{
+		"Bell Labs": VertexTwo{
+			40.68433, -74.39967,
+		},
+		"Google": VertexTwo{
+			37.42202, -122.08408,
+		},
+	}
+	fmt.Println(m2)
+
+	// if the top-level type is just a name it can be omitted from the elements of the literal
+	var m3 = map[string]VertexTwo{
+		"Bell Labs": {40.68433, -74.39967},
+		"Google":    {37.42202, -122.08408},
+	}
+	fmt.Println(m3)
+
+	// mutating Maps
+	m4 := make(map[string]int)
+
+	m4["Answer"] = 42
+	fmt.Println("The value:", m4["Answer"])
+
+	m4["Answer"] = 48
+	fmt.Println("The value:", m4["Answer"])
+
+	delete(m4, "Answer")
+	fmt.Println("The value:", m4["Answer"])
+
+	value, ok := m["Answer"]
+	fmt.Println("The value:", value, "Present?", ok)
+}
+
+type VertexTwo struct {
+	Lat, Long float64
 }
 
 func printSlice(n []int) {
