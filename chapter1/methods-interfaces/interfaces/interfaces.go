@@ -72,6 +72,21 @@ func main() {
 
 	i4 = "hello"
 	describe(i4)
+
+	// type assertions
+	var g interface{} = "hello"
+
+	z := g.(string)
+	fmt.Println(z)
+
+	z, ok := g.(string)
+	fmt.Println(z, ok)
+
+	x, ok := g.(float64)
+	fmt.Println(x, ok)
+
+	// x = g.(float64) // panic
+	// fmt.Println(x)
 }
 
 type MyFloat float64
