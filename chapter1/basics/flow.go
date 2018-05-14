@@ -22,6 +22,19 @@ func pow(x, n, lim float64) float64 {
 	return lim
 }
 
+func Sqrt(x float64) float64 {
+	z := 1.0
+	for i := 0; i < 10; i++ {
+		change := (z*z - x) / (2 * z)
+		if math.Abs(change) < 0.001 {
+			return z
+		}
+		z -= change
+		fmt.Println(z)
+	}
+	return z
+}
+
 func main() {
 	sum := 0
 	for i := 0; i < 10; i++ {
@@ -55,4 +68,7 @@ func main() {
 		pow(3, 2, 10),
 		pow(3, 3, 20),
 	)
+
+	// sqrt exercise
+	fmt.Println(Sqrt(49))
 }
