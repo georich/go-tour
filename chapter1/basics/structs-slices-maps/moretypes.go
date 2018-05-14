@@ -189,6 +189,19 @@ func main() {
 
 	h = append(h, 2, 3, 4)
 	printSlice(h)
+
+	// Range
+	// range form of the for loop iterates over a slice or map
+	// ranging over a slice returns two values, first is index, second is copy of element value
+	var pow = []int{1, 2, 4, 8, 16, 32, 64, 128}
+
+	for i, v := range pow {
+		fmt.Printf("2**%d = %d\n", i, v)
+	}
+	// can skip index or value by assigning to _
+	for _, value := range pow {
+		fmt.Printf("%d\n", value)
+	}
 }
 
 func printSlice(n []int) {
